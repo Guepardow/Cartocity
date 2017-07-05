@@ -1,0 +1,799 @@
+num_bureau;choix;vote
+1;abstention;199
+2;abstention;257
+3;abstention;233
+4;abstention;255
+5;abstention;285
+6;abstention;208
+7;abstention;184
+8;abstention;116
+9;abstention;198
+10;abstention;209
+11;abstention;197
+12;abstention;165
+13;abstention;231
+14;abstention;161
+15;abstention;196
+16;abstention;190
+17;abstention;323
+18;abstention;198
+19;abstention;175
+20;abstention;232
+21;abstention;239
+22;abstention;372
+23;abstention;352
+24;abstention;333
+25;abstention;323
+26;abstention;357
+27;abstention;292
+28;abstention;393
+29;abstention;340
+30;abstention;338
+31;abstention;209
+32;abstention;201
+33;abstention;251
+34;abstention;195
+35;abstention;248
+36;abstention;301
+37;abstention;201
+38;abstention;303
+39;abstention;244
+40;abstention;153
+41;abstention;283
+42;abstention;322
+43;abstention;385
+44;abstention;207
+45;abstention;174
+46;abstention;190
+47;abstention;234
+48;abstention;341
+49;abstention;258
+50;abstention;279
+51;abstention;316
+52;abstention;326
+53;abstention;230
+54;abstention;313
+55;abstention;199
+56;abstention;168
+57;abstention;162
+1;Benoit HAMON;95
+2;Benoit HAMON;113
+3;Benoit HAMON;99
+4;Benoit HAMON;110
+5;Benoit HAMON;76
+6;Benoit HAMON;124
+7;Benoit HAMON;119
+8;Benoit HAMON;64
+9;Benoit HAMON;114
+10;Benoit HAMON;100
+11;Benoit HAMON;121
+12;Benoit HAMON;135
+13;Benoit HAMON;108
+14;Benoit HAMON;101
+15;Benoit HAMON;135
+16;Benoit HAMON;116
+17;Benoit HAMON;84
+18;Benoit HAMON;99
+19;Benoit HAMON;125
+20;Benoit HAMON;57
+21;Benoit HAMON;70
+22;Benoit HAMON;79
+23;Benoit HAMON;74
+24;Benoit HAMON;59
+25;Benoit HAMON;67
+26;Benoit HAMON;39
+27;Benoit HAMON;68
+28;Benoit HAMON;52
+29;Benoit HAMON;67
+30;Benoit HAMON;70
+31;Benoit HAMON;48
+32;Benoit HAMON;121
+33;Benoit HAMON;104
+34;Benoit HAMON;92
+35;Benoit HAMON;84
+36;Benoit HAMON;32
+37;Benoit HAMON;97
+38;Benoit HAMON;75
+39;Benoit HAMON;116
+40;Benoit HAMON;99
+41;Benoit HAMON;86
+42;Benoit HAMON;60
+43;Benoit HAMON;63
+44;Benoit HAMON;115
+45;Benoit HAMON;103
+46;Benoit HAMON;101
+47;Benoit HAMON;96
+48;Benoit HAMON;57
+49;Benoit HAMON;81
+50;Benoit HAMON;70
+51;Benoit HAMON;93
+52;Benoit HAMON;65
+53;Benoit HAMON;113
+54;Benoit HAMON;50
+55;Benoit HAMON;138
+56;Benoit HAMON;146
+57;Benoit HAMON;113
+1;blanc;8
+2;blanc;13
+3;blanc;9
+4;blanc;3
+5;blanc;7
+6;blanc;13
+7;blanc;8
+8;blanc;7
+9;blanc;4
+10;blanc;6
+11;blanc;10
+12;blanc;6
+13;blanc;5
+14;blanc;8
+15;blanc;16
+16;blanc;10
+17;blanc;14
+18;blanc;10
+19;blanc;5
+20;blanc;15
+21;blanc;10
+22;blanc;19
+23;blanc;15
+24;blanc;8
+25;blanc;19
+26;blanc;11
+27;blanc;12
+28;blanc;16
+29;blanc;10
+30;blanc;12
+31;blanc;4
+32;blanc;10
+33;blanc;14
+34;blanc;8
+35;blanc;8
+36;blanc;13
+37;blanc;2
+38;blanc;11
+39;blanc;7
+40;blanc;3
+41;blanc;10
+42;blanc;15
+43;blanc;18
+44;blanc;7
+45;blanc;10
+46;blanc;7
+47;blanc;8
+48;blanc;12
+49;blanc;14
+50;blanc;8
+51;blanc;7
+52;blanc;9
+53;blanc;7
+54;blanc;14
+55;blanc;7
+56;blanc;5
+57;blanc;4
+1;Emmanuel MACRON;170
+2;Emmanuel MACRON;190
+3;Emmanuel MACRON;215
+4;Emmanuel MACRON;178
+5;Emmanuel MACRON;146
+6;Emmanuel MACRON;247
+7;Emmanuel MACRON;182
+8;Emmanuel MACRON;139
+9;Emmanuel MACRON;233
+10;Emmanuel MACRON;257
+11;Emmanuel MACRON;227
+12;Emmanuel MACRON;288
+13;Emmanuel MACRON;218
+14;Emmanuel MACRON;223
+15;Emmanuel MACRON;270
+16;Emmanuel MACRON;255
+17;Emmanuel MACRON;200
+18;Emmanuel MACRON;188
+19;Emmanuel MACRON;258
+20;Emmanuel MACRON;129
+21;Emmanuel MACRON;172
+22;Emmanuel MACRON;215
+23;Emmanuel MACRON;178
+24;Emmanuel MACRON;160
+25;Emmanuel MACRON;166
+26;Emmanuel MACRON;98
+27;Emmanuel MACRON;169
+28;Emmanuel MACRON;135
+29;Emmanuel MACRON;140
+30;Emmanuel MACRON;202
+31;Emmanuel MACRON;94
+32;Emmanuel MACRON;184
+33;Emmanuel MACRON;202
+34;Emmanuel MACRON;172
+35;Emmanuel MACRON;211
+36;Emmanuel MACRON;148
+37;Emmanuel MACRON;151
+38;Emmanuel MACRON;139
+39;Emmanuel MACRON;198
+40;Emmanuel MACRON;155
+41;Emmanuel MACRON;190
+42;Emmanuel MACRON;179
+43;Emmanuel MACRON;164
+44;Emmanuel MACRON;197
+45;Emmanuel MACRON;214
+46;Emmanuel MACRON;219
+47;Emmanuel MACRON;203
+48;Emmanuel MACRON;129
+49;Emmanuel MACRON;193
+50;Emmanuel MACRON;116
+51;Emmanuel MACRON;169
+52;Emmanuel MACRON;177
+53;Emmanuel MACRON;248
+54;Emmanuel MACRON;122
+55;Emmanuel MACRON;226
+56;Emmanuel MACRON;213
+57;Emmanuel MACRON;229
+1;Francois ASSELINEAU;1
+2;Francois ASSELINEAU;7
+3;Francois ASSELINEAU;7
+4;Francois ASSELINEAU;11
+5;Francois ASSELINEAU;21
+6;Francois ASSELINEAU;10
+7;Francois ASSELINEAU;7
+8;Francois ASSELINEAU;0
+9;Francois ASSELINEAU;9
+10;Francois ASSELINEAU;9
+11;Francois ASSELINEAU;7
+12;Francois ASSELINEAU;6
+13;Francois ASSELINEAU;13
+14;Francois ASSELINEAU;2
+15;Francois ASSELINEAU;3
+16;Francois ASSELINEAU;7
+17;Francois ASSELINEAU;18
+18;Francois ASSELINEAU;3
+19;Francois ASSELINEAU;5
+20;Francois ASSELINEAU;8
+21;Francois ASSELINEAU;16
+22;Francois ASSELINEAU;10
+23;Francois ASSELINEAU;20
+24;Francois ASSELINEAU;11
+25;Francois ASSELINEAU;12
+26;Francois ASSELINEAU;20
+27;Francois ASSELINEAU;10
+28;Francois ASSELINEAU;10
+29;Francois ASSELINEAU;8
+30;Francois ASSELINEAU;9
+31;Francois ASSELINEAU;2
+32;Francois ASSELINEAU;7
+33;Francois ASSELINEAU;7
+34;Francois ASSELINEAU;8
+35;Francois ASSELINEAU;10
+36;Francois ASSELINEAU;10
+37;Francois ASSELINEAU;12
+38;Francois ASSELINEAU;17
+39;Francois ASSELINEAU;11
+40;Francois ASSELINEAU;8
+41;Francois ASSELINEAU;7
+42;Francois ASSELINEAU;12
+43;Francois ASSELINEAU;20
+44;Francois ASSELINEAU;3
+45;Francois ASSELINEAU;5
+46;Francois ASSELINEAU;6
+47;Francois ASSELINEAU;5
+48;Francois ASSELINEAU;10
+49;Francois ASSELINEAU;11
+50;Francois ASSELINEAU;10
+51;Francois ASSELINEAU;17
+52;Francois ASSELINEAU;11
+53;Francois ASSELINEAU;12
+54;Francois ASSELINEAU;12
+55;Francois ASSELINEAU;6
+56;Francois ASSELINEAU;7
+57;Francois ASSELINEAU;6
+1;Francois FILLON;76
+2;Francois FILLON;67
+3;Francois FILLON;72
+4;Francois FILLON;59
+5;Francois FILLON;52
+6;Francois FILLON;62
+7;Francois FILLON;64
+8;Francois FILLON;40
+9;Francois FILLON;49
+10;Francois FILLON;73
+11;Francois FILLON;53
+12;Francois FILLON;96
+13;Francois FILLON;118
+14;Francois FILLON;122
+15;Francois FILLON;105
+16;Francois FILLON;100
+17;Francois FILLON;54
+18;Francois FILLON;52
+19;Francois FILLON;59
+20;Francois FILLON;36
+21;Francois FILLON;58
+22;Francois FILLON;49
+23;Francois FILLON;50
+24;Francois FILLON;41
+25;Francois FILLON;39
+26;Francois FILLON;28
+27;Francois FILLON;55
+28;Francois FILLON;42
+29;Francois FILLON;72
+30;Francois FILLON;67
+31;Francois FILLON;31
+32;Francois FILLON;62
+33;Francois FILLON;61
+34;Francois FILLON;87
+35;Francois FILLON;60
+36;Francois FILLON;62
+37;Francois FILLON;49
+38;Francois FILLON;38
+39;Francois FILLON;63
+40;Francois FILLON;39
+41;Francois FILLON;97
+42;Francois FILLON;72
+43;Francois FILLON;35
+44;Francois FILLON;65
+45;Francois FILLON;75
+46;Francois FILLON;84
+47;Francois FILLON;87
+48;Francois FILLON;63
+49;Francois FILLON;84
+50;Francois FILLON;69
+51;Francois FILLON;59
+52;Francois FILLON;80
+53;Francois FILLON;62
+54;Francois FILLON;34
+55;Francois FILLON;76
+56;Francois FILLON;79
+57;Francois FILLON;54
+1;Jacques CHEMINADE;4
+2;Jacques CHEMINADE;2
+3;Jacques CHEMINADE;0
+4;Jacques CHEMINADE;6
+5;Jacques CHEMINADE;0
+6;Jacques CHEMINADE;2
+7;Jacques CHEMINADE;2
+8;Jacques CHEMINADE;2
+9;Jacques CHEMINADE;0
+10;Jacques CHEMINADE;0
+11;Jacques CHEMINADE;0
+12;Jacques CHEMINADE;0
+13;Jacques CHEMINADE;0
+14;Jacques CHEMINADE;3
+15;Jacques CHEMINADE;2
+16;Jacques CHEMINADE;1
+17;Jacques CHEMINADE;2
+18;Jacques CHEMINADE;2
+19;Jacques CHEMINADE;1
+20;Jacques CHEMINADE;2
+21;Jacques CHEMINADE;2
+22;Jacques CHEMINADE;1
+23;Jacques CHEMINADE;4
+24;Jacques CHEMINADE;0
+25;Jacques CHEMINADE;0
+26;Jacques CHEMINADE;2
+27;Jacques CHEMINADE;4
+28;Jacques CHEMINADE;2
+29;Jacques CHEMINADE;0
+30;Jacques CHEMINADE;0
+31;Jacques CHEMINADE;0
+32;Jacques CHEMINADE;1
+33;Jacques CHEMINADE;4
+34;Jacques CHEMINADE;0
+35;Jacques CHEMINADE;1
+36;Jacques CHEMINADE;1
+37;Jacques CHEMINADE;1
+38;Jacques CHEMINADE;0
+39;Jacques CHEMINADE;1
+40;Jacques CHEMINADE;0
+41;Jacques CHEMINADE;1
+42;Jacques CHEMINADE;2
+43;Jacques CHEMINADE;0
+44;Jacques CHEMINADE;1
+45;Jacques CHEMINADE;1
+46;Jacques CHEMINADE;0
+47;Jacques CHEMINADE;0
+48;Jacques CHEMINADE;4
+49;Jacques CHEMINADE;2
+50;Jacques CHEMINADE;2
+51;Jacques CHEMINADE;1
+52;Jacques CHEMINADE;2
+53;Jacques CHEMINADE;1
+54;Jacques CHEMINADE;1
+55;Jacques CHEMINADE;2
+56;Jacques CHEMINADE;0
+57;Jacques CHEMINADE;3
+1;Jean LASSALLE;3
+2;Jean LASSALLE;4
+3;Jean LASSALLE;2
+4;Jean LASSALLE;3
+5;Jean LASSALLE;4
+6;Jean LASSALLE;4
+7;Jean LASSALLE;1
+8;Jean LASSALLE;2
+9;Jean LASSALLE;6
+10;Jean LASSALLE;3
+11;Jean LASSALLE;4
+12;Jean LASSALLE;3
+13;Jean LASSALLE;7
+14;Jean LASSALLE;5
+15;Jean LASSALLE;1
+16;Jean LASSALLE;5
+17;Jean LASSALLE;0
+18;Jean LASSALLE;4
+19;Jean LASSALLE;4
+20;Jean LASSALLE;4
+21;Jean LASSALLE;2
+22;Jean LASSALLE;7
+23;Jean LASSALLE;10
+24;Jean LASSALLE;6
+25;Jean LASSALLE;3
+26;Jean LASSALLE;2
+27;Jean LASSALLE;9
+28;Jean LASSALLE;4
+29;Jean LASSALLE;5
+30;Jean LASSALLE;1
+31;Jean LASSALLE;3
+32;Jean LASSALLE;1
+33;Jean LASSALLE;2
+34;Jean LASSALLE;3
+35;Jean LASSALLE;7
+36;Jean LASSALLE;3
+37;Jean LASSALLE;6
+38;Jean LASSALLE;6
+39;Jean LASSALLE;2
+40;Jean LASSALLE;3
+41;Jean LASSALLE;7
+42;Jean LASSALLE;6
+43;Jean LASSALLE;2
+44;Jean LASSALLE;5
+45;Jean LASSALLE;6
+46;Jean LASSALLE;5
+47;Jean LASSALLE;6
+48;Jean LASSALLE;5
+49;Jean LASSALLE;3
+50;Jean LASSALLE;1
+51;Jean LASSALLE;4
+52;Jean LASSALLE;7
+53;Jean LASSALLE;2
+54;Jean LASSALLE;3
+55;Jean LASSALLE;9
+56;Jean LASSALLE;1
+57;Jean LASSALLE;2
+1;Jean-Luc MELENCHON;265
+2;Jean-Luc MELENCHON;376
+3;Jean-Luc MELENCHON;324
+4;Jean-Luc MELENCHON;325
+5;Jean-Luc MELENCHON;331
+6;Jean-Luc MELENCHON;306
+7;Jean-Luc MELENCHON;288
+8;Jean-Luc MELENCHON;254
+9;Jean-Luc MELENCHON;290
+10;Jean-Luc MELENCHON;350
+11;Jean-Luc MELENCHON;372
+12;Jean-Luc MELENCHON;243
+13;Jean-Luc MELENCHON;249
+14;Jean-Luc MELENCHON;267
+15;Jean-Luc MELENCHON;313
+16;Jean-Luc MELENCHON;259
+17;Jean-Luc MELENCHON;380
+18;Jean-Luc MELENCHON;294
+19;Jean-Luc MELENCHON;313
+20;Jean-Luc MELENCHON;301
+21;Jean-Luc MELENCHON;295
+22;Jean-Luc MELENCHON;357
+23;Jean-Luc MELENCHON;330
+24;Jean-Luc MELENCHON;286
+25;Jean-Luc MELENCHON;263
+26;Jean-Luc MELENCHON;261
+27;Jean-Luc MELENCHON;271
+28;Jean-Luc MELENCHON;251
+29;Jean-Luc MELENCHON;265
+30;Jean-Luc MELENCHON;309
+31;Jean-Luc MELENCHON;161
+32;Jean-Luc MELENCHON;321
+33;Jean-Luc MELENCHON;391
+34;Jean-Luc MELENCHON;273
+35;Jean-Luc MELENCHON;333
+36;Jean-Luc MELENCHON;246
+37;Jean-Luc MELENCHON;280
+38;Jean-Luc MELENCHON;334
+39;Jean-Luc MELENCHON;434
+40;Jean-Luc MELENCHON;284
+41;Jean-Luc MELENCHON;287
+42;Jean-Luc MELENCHON;285
+43;Jean-Luc MELENCHON;301
+44;Jean-Luc MELENCHON;334
+45;Jean-Luc MELENCHON;243
+46;Jean-Luc MELENCHON;252
+47;Jean-Luc MELENCHON;285
+48;Jean-Luc MELENCHON;295
+49;Jean-Luc MELENCHON;272
+50;Jean-Luc MELENCHON;242
+51;Jean-Luc MELENCHON;277
+52;Jean-Luc MELENCHON;282
+53;Jean-Luc MELENCHON;369
+54;Jean-Luc MELENCHON;311
+55;Jean-Luc MELENCHON;337
+56;Jean-Luc MELENCHON;284
+57;Jean-Luc MELENCHON;313
+1;Marine LE PEN;45
+2;Marine LE PEN;45
+3;Marine LE PEN;42
+4;Marine LE PEN;35
+5;Marine LE PEN;63
+6;Marine LE PEN;50
+7;Marine LE PEN;32
+8;Marine LE PEN;15
+9;Marine LE PEN;23
+10;Marine LE PEN;31
+11;Marine LE PEN;48
+12;Marine LE PEN;27
+13;Marine LE PEN;26
+14;Marine LE PEN;42
+15;Marine LE PEN;40
+16;Marine LE PEN;45
+17;Marine LE PEN;92
+18;Marine LE PEN;37
+19;Marine LE PEN;38
+20;Marine LE PEN;48
+21;Marine LE PEN;66
+22;Marine LE PEN;109
+23;Marine LE PEN;86
+24;Marine LE PEN;106
+25;Marine LE PEN;117
+26;Marine LE PEN;110
+27;Marine LE PEN;104
+28;Marine LE PEN;103
+29;Marine LE PEN;104
+30;Marine LE PEN;78
+31;Marine LE PEN;58
+32;Marine LE PEN;39
+33;Marine LE PEN;57
+34;Marine LE PEN;43
+35;Marine LE PEN;76
+36;Marine LE PEN;80
+37;Marine LE PEN;46
+38;Marine LE PEN;83
+39;Marine LE PEN;80
+40;Marine LE PEN;26
+41;Marine LE PEN;73
+42;Marine LE PEN;62
+43;Marine LE PEN;74
+44;Marine LE PEN;61
+45;Marine LE PEN;31
+46;Marine LE PEN;49
+47;Marine LE PEN;74
+48;Marine LE PEN;94
+49;Marine LE PEN;104
+50;Marine LE PEN;71
+51;Marine LE PEN;88
+52;Marine LE PEN;90
+53;Marine LE PEN;56
+54;Marine LE PEN;98
+55;Marine LE PEN;51
+56;Marine LE PEN;37
+57;Marine LE PEN;23
+1;Nathalie ARTHAUD;10
+2;Nathalie ARTHAUD;0
+3;Nathalie ARTHAUD;1
+4;Nathalie ARTHAUD;3
+5;Nathalie ARTHAUD;5
+6;Nathalie ARTHAUD;4
+7;Nathalie ARTHAUD;2
+8;Nathalie ARTHAUD;0
+9;Nathalie ARTHAUD;3
+10;Nathalie ARTHAUD;4
+11;Nathalie ARTHAUD;6
+12;Nathalie ARTHAUD;3
+13;Nathalie ARTHAUD;3
+14;Nathalie ARTHAUD;1
+15;Nathalie ARTHAUD;3
+16;Nathalie ARTHAUD;2
+17;Nathalie ARTHAUD;4
+18;Nathalie ARTHAUD;8
+19;Nathalie ARTHAUD;3
+20;Nathalie ARTHAUD;2
+21;Nathalie ARTHAUD;5
+22;Nathalie ARTHAUD;7
+23;Nathalie ARTHAUD;5
+24;Nathalie ARTHAUD;2
+25;Nathalie ARTHAUD;7
+26;Nathalie ARTHAUD;3
+27;Nathalie ARTHAUD;4
+28;Nathalie ARTHAUD;5
+29;Nathalie ARTHAUD;9
+30;Nathalie ARTHAUD;1
+31;Nathalie ARTHAUD;2
+32;Nathalie ARTHAUD;5
+33;Nathalie ARTHAUD;5
+34;Nathalie ARTHAUD;1
+35;Nathalie ARTHAUD;4
+36;Nathalie ARTHAUD;6
+37;Nathalie ARTHAUD;3
+38;Nathalie ARTHAUD;6
+39;Nathalie ARTHAUD;2
+40;Nathalie ARTHAUD;4
+41;Nathalie ARTHAUD;6
+42;Nathalie ARTHAUD;6
+43;Nathalie ARTHAUD;3
+44;Nathalie ARTHAUD;3
+45;Nathalie ARTHAUD;8
+46;Nathalie ARTHAUD;5
+47;Nathalie ARTHAUD;4
+48;Nathalie ARTHAUD;8
+49;Nathalie ARTHAUD;3
+50;Nathalie ARTHAUD;8
+51;Nathalie ARTHAUD;2
+52;Nathalie ARTHAUD;4
+53;Nathalie ARTHAUD;1
+54;Nathalie ARTHAUD;3
+55;Nathalie ARTHAUD;2
+56;Nathalie ARTHAUD;2
+57;Nathalie ARTHAUD;2
+1;Nicolas DUPONT-AIGNAN;12
+2;Nicolas DUPONT-AIGNAN;9
+3;Nicolas DUPONT-AIGNAN;5
+4;Nicolas DUPONT-AIGNAN;6
+5;Nicolas DUPONT-AIGNAN;12
+6;Nicolas DUPONT-AIGNAN;12
+7;Nicolas DUPONT-AIGNAN;11
+8;Nicolas DUPONT-AIGNAN;6
+9;Nicolas DUPONT-AIGNAN;13
+10;Nicolas DUPONT-AIGNAN;12
+11;Nicolas DUPONT-AIGNAN;13
+12;Nicolas DUPONT-AIGNAN;14
+13;Nicolas DUPONT-AIGNAN;17
+14;Nicolas DUPONT-AIGNAN;12
+15;Nicolas DUPONT-AIGNAN;19
+16;Nicolas DUPONT-AIGNAN;20
+17;Nicolas DUPONT-AIGNAN;15
+18;Nicolas DUPONT-AIGNAN;15
+19;Nicolas DUPONT-AIGNAN;17
+20;Nicolas DUPONT-AIGNAN;6
+21;Nicolas DUPONT-AIGNAN;15
+22;Nicolas DUPONT-AIGNAN;16
+23;Nicolas DUPONT-AIGNAN;20
+24;Nicolas DUPONT-AIGNAN;18
+25;Nicolas DUPONT-AIGNAN;19
+26;Nicolas DUPONT-AIGNAN;11
+27;Nicolas DUPONT-AIGNAN;27
+28;Nicolas DUPONT-AIGNAN;16
+29;Nicolas DUPONT-AIGNAN;19
+30;Nicolas DUPONT-AIGNAN;17
+31;Nicolas DUPONT-AIGNAN;13
+32;Nicolas DUPONT-AIGNAN;9
+33;Nicolas DUPONT-AIGNAN;18
+34;Nicolas DUPONT-AIGNAN;16
+35;Nicolas DUPONT-AIGNAN;14
+36;Nicolas DUPONT-AIGNAN;13
+37;Nicolas DUPONT-AIGNAN;11
+38;Nicolas DUPONT-AIGNAN;11
+39;Nicolas DUPONT-AIGNAN;11
+40;Nicolas DUPONT-AIGNAN;3
+41;Nicolas DUPONT-AIGNAN;9
+42;Nicolas DUPONT-AIGNAN;13
+43;Nicolas DUPONT-AIGNAN;9
+44;Nicolas DUPONT-AIGNAN;13
+45;Nicolas DUPONT-AIGNAN;15
+46;Nicolas DUPONT-AIGNAN;13
+47;Nicolas DUPONT-AIGNAN;24
+48;Nicolas DUPONT-AIGNAN;13
+49;Nicolas DUPONT-AIGNAN;19
+50;Nicolas DUPONT-AIGNAN;10
+51;Nicolas DUPONT-AIGNAN;20
+52;Nicolas DUPONT-AIGNAN;14
+53;Nicolas DUPONT-AIGNAN;8
+54;Nicolas DUPONT-AIGNAN;9
+55;Nicolas DUPONT-AIGNAN;13
+56;Nicolas DUPONT-AIGNAN;6
+57;Nicolas DUPONT-AIGNAN;17
+1;nul;2
+2;nul;10
+3;nul;6
+4;nul;8
+5;nul;8
+6;nul;1
+7;nul;8
+8;nul;0
+9;nul;3
+10;nul;5
+11;nul;8
+12;nul;4
+13;nul;6
+14;nul;9
+15;nul;3
+16;nul;3
+17;nul;5
+18;nul;11
+19;nul;2
+20;nul;2
+21;nul;10
+22;nul;4
+23;nul;8
+24;nul;3
+25;nul;8
+26;nul;6
+27;nul;6
+28;nul;7
+29;nul;8
+30;nul;10
+31;nul;4
+32;nul;8
+33;nul;13
+34;nul;4
+35;nul;2
+36;nul;6
+37;nul;8
+38;nul;7
+39;nul;5
+40;nul;4
+41;nul;6
+42;nul;6
+43;nul;2
+44;nul;9
+45;nul;3
+46;nul;8
+47;nul;1
+48;nul;10
+49;nul;4
+50;nul;2
+51;nul;7
+52;nul;8
+53;nul;4
+54;nul;11
+55;nul;8
+56;nul;3
+57;nul;4
+1;Philippe POUTOU;15
+2;Philippe POUTOU;9
+3;Philippe POUTOU;8
+4;Philippe POUTOU;16
+5;Philippe POUTOU;15
+6;Philippe POUTOU;8
+7;Philippe POUTOU;5
+8;Philippe POUTOU;9
+9;Philippe POUTOU;11
+10;Philippe POUTOU;20
+11;Philippe POUTOU;11
+12;Philippe POUTOU;11
+13;Philippe POUTOU;14
+14;Philippe POUTOU;12
+15;Philippe POUTOU;6
+16;Philippe POUTOU;12
+17;Philippe POUTOU;18
+18;Philippe POUTOU;18
+19;Philippe POUTOU;6
+20;Philippe POUTOU;5
+21;Philippe POUTOU;18
+22;Philippe POUTOU;14
+23;Philippe POUTOU;4
+24;Philippe POUTOU;8
+25;Philippe POUTOU;11
+26;Philippe POUTOU;8
+27;Philippe POUTOU;10
+28;Philippe POUTOU;9
+29;Philippe POUTOU;8
+30;Philippe POUTOU;6
+31;Philippe POUTOU;5
+32;Philippe POUTOU;10
+33;Philippe POUTOU;13
+34;Philippe POUTOU;11
+35;Philippe POUTOU;6
+36;Philippe POUTOU;5
+37;Philippe POUTOU;12
+38;Philippe POUTOU;17
+39;Philippe POUTOU;14
+40;Philippe POUTOU;5
+41;Philippe POUTOU;9
+42;Philippe POUTOU;3
+43;Philippe POUTOU;9
+44;Philippe POUTOU;11
+45;Philippe POUTOU;14
+46;Philippe POUTOU;8
+47;Philippe POUTOU;8
+48;Philippe POUTOU;8
+49;Philippe POUTOU;10
+50;Philippe POUTOU;6
+51;Philippe POUTOU;9
+52;Philippe POUTOU;8
+53;Philippe POUTOU;13
+54;Philippe POUTOU;7
+55;Philippe POUTOU;17
+56;Philippe POUTOU;16
+57;Philippe POUTOU;10

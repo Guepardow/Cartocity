@@ -1,2 +1,2 @@
 # Cartocity
-Outil de datavisualisation au niveau d'une ville
+Outil de datavisualisation de données d'une ville

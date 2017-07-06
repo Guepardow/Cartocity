@@ -5,7 +5,8 @@
 # Mehdi Miah
 #
 # TODO  : rendrele 1er tour / 2nd tour reactive à l'élection
-#       : https://stackoverflow.com/questions/40153870/r-shiny-how-to-filter-a-dataframe-before-outputting-a-merged-spatialpolygonsdat
+#       : à chaque candidat sa couleur
+#       : limiter les teintes pour les petits candidats
 #
 # BUG : encoding UTF-8 non active sur geojson_read
 #     : bureaux_de_vote : code couleur de 17 sur la carte des bureaux 2015
@@ -28,28 +29,7 @@ library(geojsonio)
 
 
 # Il faut calculer les pourcentages des voix emportés par le candidat par ce candidat
-get_voix = function(election_tour, mon_choix){
-  
-  # votes favorables
-  favorable = election_tour %>% 
-    filter(choix == mon_choix)
-  
-  # votes total
-  total = election_tour %>%
-    group_by(num_bureau) %>%
-    summarise(count = sum(vote))
-  
-  # pourcentage de voix
-  final = favorable %>%
-    left_join(total, by = "num_bureau") %>%
-    mutate(pct = round(vote/count * 100,2)) %>%
-    select(num_bureau, choix, pct)
-  
-  return(final)
-  
-}
-
-
+source("./src/appli/get_voix.R")
 
 # == Ouverture des fichiers permettant la géolocalisation ===================
 
@@ -63,16 +43,6 @@ bureaux_de_vote = geojson_read("./data/bureaux_de_vote/output/montreuil_57s.json
 # debug =======================
 election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", data.table = FALSE, encoding = "UTF-8")
 liste_candidats = election_tour$choix %>% unique()
-
-#voix = get_voix(election_tour, "abstention")
-#merger = merge(election_tour, voix, by = c("num_bureau", "choix"))
-# ==================
-
-#df_voix = get_voix(election_tour, "abstention")
-#bureaux_de_vote@data <- left_join(bureaux_de_vote@data, df_voix)
-#pal <- colorNumeric(palette = "Reds", domain = bureaux_de_vote$pct)
-#popup <- paste0("<strong>Bureau: </strong>",bureaux_de_vote$name, 
-#                "<br> <strong>Pourcentage: </strong>", bureaux_de_vote$pct, "%")
 
 # == User interface ============================================
 
@@ -158,9 +128,7 @@ server = shinyServer(function(input, output, session) {
   
   # == Reactive dataset ==
   newData <- reactive({
-    isolate({
       df_voix <- get_voix(election_tour, input$candidat_choice)
-    })
     return(df_voix)
   })
   
@@ -174,25 +142,28 @@ server = shinyServer(function(input, output, session) {
   output$mymap <- renderLeaflet({
     
     df_voix = newData()
-    bureaux_de_vote@data <- merge(bureaux_de_vote@data, df_voix())
-    
+    bureaux_de_vote@data <- left_join(bureaux_de_vote@data, df_voix, by = "num_bureau")
+
     # == Colorimétrie ==
     
-    pal <- colorNumeric(palette = "Reds", domain = bureaux_de_vote$pct)
+    pal <- colorNumeric(palette = "Reds", domain = 0:55) #bureaux_de_vote$pct)
     
     # == Nom des bureaux de vote ==
     
-    popup <- paste0("<strong>Bureau: </strong>",bureaux_de_vote$name, 
-                    "<br> <strong>Pourcentage: </strong>", bureaux_de_vote$pct, "%")
-    
-  
-    leaflet(bureaux_de_vote, options = leafletOptions(zoomControl = FALSE)) %>%
+
+    leaflet(bureaux_de_vote, 
+            options = leafletOptions(zoomControl = FALSE)) %>%
       setView(lng = 2.45, lat = 48.864, zoom = 14) %>%
-      addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom=13, maxZoom=18))  %>%
-      addPolygons(fillColor = ~pal(bureaux_de_vote$pct),  color = "black",
-                  fillOpacity = 0.9, popup = popup) %>%
-      addLegend("bottomright", pal = pal, values = ~bureaux_de_vote$pct,
-                title = "Taux d'abstention par bureau de vote",
+      
+      addProviderTiles("CartoDB.Positron", 
+                       options = providerTileOptions(minZoom=13, maxZoom=18))  %>%
+      addPolygons(fillColor = ~pal(pct),  
+                  color = "black",
+                  fillOpacity = 0.9, 
+                  popup = paste0("<strong>Bureau: </strong>",bureaux_de_vote$name, 
+                                 "<br> <strong>Pourcentage: </strong>", bureaux_de_vote$pct, "%")) %>%
+      addLegend("bottomright", pal = pal, values = ~pct,
+                title = "% de voix",
                 labFormat = labelFormat(suffix = "%"),
                 opacity = 1, labels = "taux_abstention"
       )

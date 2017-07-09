@@ -23,26 +23,28 @@ setwd("C:/Users/Mehdi/Desktop/Cartocity")
 
 library(dplyr)
 library(data.table)
+library(tidyr)
 library(shiny)
 library(leaflet)
 library(geojsonio)
 
 
 # Il faut calculer les pourcentages des voix emportés par le candidat par ce candidat
-source("./src/appli/get_voix.R")
+source("./src/appli/get_voix_officielle.R")
+source("./src/appli/get_voix_brute.R")
+source("./src/appli/get_max_voix.R")
 
 # == Ouverture des fichiers permettant la géolocalisation ===================
 
 # Liste des élections disponibles : ensemble des dossiers présents dans ./data/vote
 liste_elections = list.dirs(path = "./data/vote", full.names = FALSE, recursive = FALSE)
 
+# Liste des couleurs des candidats
+liste_couleurs = fread("./data/vote/2017 - Presidentielles/color.csv", stringsAsFactors = FALSE, data.table = FALSE)
+
 # carte des bureaux de vote
 # TODO : a rendre reactive
 bureaux_de_vote = geojson_read("./data/bureaux_de_vote/output/montreuil_57s.json", what = "sp")
-
-# debug =======================
-election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", data.table = FALSE, encoding = "UTF-8")
-liste_candidats = election_tour$choix %>% unique()
 
 # == User interface ============================================
 
@@ -74,18 +76,39 @@ ui = fluidPage(
                     
                     ),
              
-             # 2e colonne : le choix du candidat (y compris abstention, nul et blanc)
+             # 2e colonne : option de visualisation
+             column(width = 3,
+                    
+                    # Choix de la méthode de calcul
+                    radioButtons(inputId = "calcul_choice",
+                                label = "Choix de la méthode de calcul",
+                                choices = c("Brute", "Officielle"),
+                                selected = "Officielle",
+                                inline = TRUE
+                    ),
+                    
+                    # Choix de la colorimétrie
+                    radioButtons(inputId = "color_choice",
+                                 label = "Choix de la colorimétrie",
+                                 choices = c("Par rapport à l'ensemble", "Par rapport au candidat"),
+                                 selected = "Par rapport au candidat"
+                    )
+                    
+                    
+             ),
+             
+             # 3e colonne : le choix du candidat (y compris abstention, nul et blanc)
              column(width = 3,
                     
                     # Choix du candidat
                     selectInput(inputId = "candidat_choice",
                                 label = "Choix du vote",
-                                choices = liste_candidats #"abstention" #liste_candidats
+                                choices = ""
                     )
                     
              ),
              
-             leafletOutput("mymap", height = 550) %>% print
+             leafletOutput("mymap", height = 650) %>% print
     ),
     
     #Panel 2 : la carte des données socio-économique
@@ -108,48 +131,71 @@ server = shinyServer(function(input, output, session) {
 
   # == Ouverture du fichier des élections du tour correspond ==
   
- # election_tour = reactive({
-#    fread(paste0("./data/vote/", input$election_choice, "/", input$tour_choice, "/output/montreuil.csv"), data.table = FALSE, encoding = "UTF-8")
-#  })
+  election_tour = reactive({
+    fread(paste0("./data/vote/", input$election_choice, "/", input$tour_choice, "/output/montreuil.csv"), data.table = FALSE, encoding = "UTF-8")
+  })
   
   
   # == Ajout du candidat sélectionné ==
 
- # liste_candidats = reactive({
-#    election_tour() %>% select(choix) %>% unique()
-#  })
+  liste_candidats = reactive({
+    election_tour() %>% select(choix) %>% unique()
+  })
   
   
   #Mise à jour de l'affichage des candidats
-  #observe({
-  #  updateSelectInput(session, "candidat_choice", choices = liste_candidats()
-  #  )
-  #})
+  observe({
+    updateSelectInput(session, "candidat_choice", choices = liste_candidats()
+    )
+  })
+  
+  #election_tour = fread("./data/vote/2017 - Presidentielles/2nd tour/output/montreuil.csv", data.table = FALSE, encoding = "UTF-8")
+  #liste_candidats = election_tour$choix %>% unique()
+  max_voix = reactive({
+    round(get_max_voix(election_tour()),2) +1 
+  })
+  
+  
   
   # == Reactive dataset ==
   newData <- reactive({
-      df_voix <- get_voix(election_tour, input$candidat_choice)
+    if(input$calcul_choice == "Officielle"){
+      df_voix <- get_voix_officielle(election_tour(), input$candidat_choice)
+    }else if(input$calcul_choice == "Brute"){
+      df_voix <- get_voix_brute(election_tour(), input$candidat_choice)
+    }
     return(df_voix)
   })
   
   df_voix = reactive({
-    get_voix(election_tour, input$candidat_choice)
+    get_voix(election_tour(), input$candidat_choice)
   })
-
- 
+  
+  # == Colorimétrie ==
+  
+  newPal <- reactive({
+    if(input$color_choice == "Par rapport à l'ensemble"){
+      pal <- colorNumeric(palette = "Reds", domain = 0:max_voix())
+    }else if(input$color_choice == "Par rapport au candidat"){
+      pal <- colorNumeric(palette = "Reds", domain = bureaux_de_vote$pct)
+    }
+    return(pal)
+  }) 
+  
+  
+  
   # == Création de la map ==
   
   output$mymap <- renderLeaflet({
     
     df_voix = newData()
     bureaux_de_vote@data <- left_join(bureaux_de_vote@data, df_voix, by = "num_bureau")
-
-    # == Colorimétrie ==
     
-    pal <- colorNumeric(palette = "Reds", domain = 0:55) #bureaux_de_vote$pct)
+    # Colorimétrie
+    pal = newPal()
+    
     
     # == Nom des bureaux de vote ==
-    
 
     leaflet(bureaux_de_vote, 
             options = leafletOptions(zoomControl = FALSE)) %>%
@@ -162,7 +208,7 @@ server = shinyServer(function(input, output, session) {
                   fillOpacity = 0.9, 
                   popup = paste0("<strong>Bureau: </strong>",bureaux_de_vote$name, 
                                  "<br> <strong>Pourcentage: </strong>", bureaux_de_vote$pct, "%")) %>%
-      addLegend("bottomright", pal = pal, values = ~pct,
+      addLegend("bottomright", pal, values = ~pct,
                 title = "% de voix",
                 labFormat = labelFormat(suffix = "%"),
                 opacity = 1, labels = "taux_abstention"

@@ -1,0 +1,286 @@
+num_bureau;choix;vote
+1;abstention;250
+2;abstention;328
+3;abstention;289
+4;abstention;315
+5;abstention;347
+6;abstention;290
+7;abstention;246
+8;abstention;132
+9;abstention;243
+10;abstention;281
+11;abstention;277
+12;abstention;210
+13;abstention;277
+14;abstention;223
+15;abstention;250
+16;abstention;257
+17;abstention;415
+18;abstention;275
+19;abstention;224
+20;abstention;273
+21;abstention;305
+22;abstention;441
+23;abstention;429
+24;abstention;372
+25;abstention;367
+26;abstention;441
+27;abstention;334
+28;abstention;424
+29;abstention;410
+30;abstention;385
+31;abstention;257
+32;abstention;264
+33;abstention;306
+34;abstention;243
+35;abstention;334
+36;abstention;339
+37;abstention;251
+38;abstention;371
+39;abstention;335
+40;abstention;206
+41;abstention;333
+42;abstention;356
+43;abstention;422
+44;abstention;258
+45;abstention;226
+46;abstention;232
+47;abstention;302
+48;abstention;406
+49;abstention;324
+50;abstention;317
+51;abstention;362
+52;abstention;364
+53;abstention;315
+54;abstention;379
+55;abstention;240
+56;abstention;220
+57;abstention;206
+1;blanc;48
+2;blanc;59
+3;blanc;51
+4;blanc;39
+5;blanc;56
+6;blanc;49
+7;blanc;32
+8;blanc;31
+9;blanc;43
+10;blanc;54
+11;blanc;48
+12;blanc;44
+13;blanc;44
+14;blanc;48
+15;blanc;58
+16;blanc;49
+17;blanc;56
+18;blanc;42
+19;blanc;48
+20;blanc;38
+21;blanc;45
+22;blanc;56
+23;blanc;42
+24;blanc;50
+25;blanc;43
+26;blanc;58
+27;blanc;68
+28;blanc;48
+29;blanc;50
+30;blanc;48
+31;blanc;18
+32;blanc;72
+33;blanc;62
+34;blanc;39
+35;blanc;63
+36;blanc;44
+37;blanc;46
+38;blanc;64
+39;blanc;51
+40;blanc;39
+41;blanc;57
+42;blanc;53
+43;blanc;53
+44;blanc;69
+45;blanc;58
+46;blanc;55
+47;blanc;75
+48;blanc;44
+49;blanc;49
+50;blanc;41
+51;blanc;63
+52;blanc;75
+53;blanc;45
+54;blanc;36
+55;blanc;76
+56;blanc;43
+57;blanc;47
+1;nul;11
+2;nul;15
+3;nul;16
+4;nul;16
+5;nul;14
+6;nul;21
+7;nul;10
+8;nul;11
+9;nul;13
+10;nul;10
+11;nul;18
+12;nul;13
+13;nul;11
+14;nul;21
+15;nul;10
+16;nul;15
+17;nul;21
+18;nul;22
+19;nul;20
+20;nul;7
+21;nul;14
+22;nul;18
+23;nul;21
+24;nul;16
+25;nul;14
+26;nul;17
+27;nul;25
+28;nul;15
+29;nul;17
+30;nul;16
+31;nul;8
+32;nul;12
+33;nul;21
+34;nul;12
+35;nul;19
+36;nul;13
+37;nul;11
+38;nul;19
+39;nul;15
+40;nul;14
+41;nul;18
+42;nul;12
+43;nul;13
+44;nul;18
+45;nul;22
+46;nul;9
+47;nul;20
+48;nul;15
+49;nul;15
+50;nul;15
+51;nul;22
+52;nul;17
+53;nul;19
+54;nul;17
+55;nul;10
+56;nul;16
+57;nul;11
+1;Emmanuel MACRON;531
+2;Emmanuel MACRON;642
+3;Emmanuel MACRON;612
+4;Emmanuel MACRON;588
+5;Emmanuel MACRON;517
+6;Emmanuel MACRON;630
+7;Emmanuel MACRON;577
+8;Emmanuel MACRON;461
+9;Emmanuel MACRON;605
+10;Emmanuel MACRON;687
+11;Emmanuel MACRON;677
+12;Emmanuel MACRON;687
+13;Emmanuel MACRON;630
+14;Emmanuel MACRON;623
+15;Emmanuel MACRON;729
+16;Emmanuel MACRON;646
+17;Emmanuel MACRON;607
+18;Emmanuel MACRON;546
+19;Emmanuel MACRON;664
+20;Emmanuel MACRON;446
+21;Emmanuel MACRON;521
+22;Emmanuel MACRON;626
+23;Emmanuel MACRON;561
+24;Emmanuel MACRON;467
+25;Emmanuel MACRON;485
+26;Emmanuel MACRON;311
+27;Emmanuel MACRON;465
+28;Emmanuel MACRON;425
+29;Emmanuel MACRON;444
+30;Emmanuel MACRON;560
+31;Emmanuel MACRON;273
+32;Emmanuel MACRON;573
+33;Emmanuel MACRON;673
+34;Emmanuel MACRON;558
+35;Emmanuel MACRON;552
+36;Emmanuel MACRON;421
+37;Emmanuel MACRON;513
+38;Emmanuel MACRON;493
+39;Emmanuel MACRON;682
+40;Emmanuel MACRON;481
+41;Emmanuel MACRON;557
+42;Emmanuel MACRON;533
+43;Emmanuel MACRON;502
+44;Emmanuel MACRON;595
+45;Emmanuel MACRON;541
+46;Emmanuel MACRON;586
+47;Emmanuel MACRON;538
+48;Emmanuel MACRON;478
+49;Emmanuel MACRON;546
+50;Emmanuel MACRON;412
+51;Emmanuel MACRON;505
+52;Emmanuel MACRON;504
+53;Emmanuel MACRON;681
+54;Emmanuel MACRON;441
+55;Emmanuel MACRON;705
+56;Emmanuel MACRON;644
+57;Emmanuel MACRON;646
+1;Marine LE PEN;66
+2;Marine LE PEN;59
+3;Marine LE PEN;55
+4;Marine LE PEN;60
+5;Marine LE PEN;91
+6;Marine LE PEN;61
+7;Marine LE PEN;49
+8;Marine LE PEN;20
+9;Marine LE PEN;52
+10;Marine LE PEN;48
+11;Marine LE PEN;57
+12;Marine LE PEN;47
+13;Marine LE PEN;52
+14;Marine LE PEN;53
+15;Marine LE PEN;65
+16;Marine LE PEN;58
+17;Marine LE PEN;110
+18;Marine LE PEN;55
+19;Marine LE PEN;55
+20;Marine LE PEN;83
+21;Marine LE PEN;93
+22;Marine LE PEN;118
+23;Marine LE PEN;104
+24;Marine LE PEN;136
+25;Marine LE PEN;145
+26;Marine LE PEN;129
+27;Marine LE PEN;150
+28;Marine LE PEN;133
+29;Marine LE PEN;134
+30;Marine LE PEN;112
+31;Marine LE PEN;78
+32;Marine LE PEN;58
+33;Marine LE PEN;82
+34;Marine LE PEN;61
+35;Marine LE PEN;97
+36;Marine LE PEN;109
+37;Marine LE PEN;58
+38;Marine LE PEN;100
+39;Marine LE PEN;105
+40;Marine LE PEN;46
+41;Marine LE PEN;106
+42;Marine LE PEN;89
+43;Marine LE PEN;95
+44;Marine LE PEN;92
+45;Marine LE PEN;55
+46;Marine LE PEN;65
+47;Marine LE PEN;100
+48;Marine LE PEN;107
+49;Marine LE PEN;124
+50;Marine LE PEN;109
+51;Marine LE PEN;117
+52;Marine LE PEN;124
+53;Marine LE PEN;66
+54;Marine LE PEN;115
+55;Marine LE PEN;60
+56;Marine LE PEN;46
+57;Marine LE PEN;32

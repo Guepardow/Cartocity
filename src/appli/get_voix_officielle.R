@@ -1,9 +1,9 @@
-get_voix = function(election_tour, mon_choix){
+get_voix_officielle = function(election_tour, mon_choix){
   # (input) election_tour : data.frame contenant les voix pour des candidats
   # (input) mon_choix     : un des candidat
   #
   # (output)              : un data.frame donnant la correspondance entre les bureaux de vote
-  #                         et son pourcentage de voix
+  #                         et son pourcentage de voix tel que calculé par le Ministère de l'Intérieur
   #
   # Remarque : le pourcentage de l'abstention est calculé par absention/(somme de tous les voix), 
   # pour les votes 'blanc' et 'nul' , le pourcentage est calculé par choix/(somme de tous les voix - abstention)
@@ -46,17 +46,16 @@ if(FALSE){
   election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", data.table = FALSE, encoding = "UTF-8")
 
   #Test 1 : abstention
-  voix = get_voix(election_tour, "abstention")
-  voix_verif1 = data.frame(num_bureau = 1:57)
-  
+  voix = get_voix_officielle(election_tour, "abstention")
+
   #Test 2 : candidat
-  voix = get_voix(election_tour, "Benoit HAMON")
+  voix = get_voix_officielle(election_tour, "Benoit HAMON")
   
   #Test 3 : blanc
-  voix = get_voix(election_tour, "blanc")
+  voix = get_voix_officielle(election_tour, "blanc")
   
   #Test 4 : nul
-  voix = get_voix(election_tour, "nul")
+  voix = get_voix_officielle(election_tour, "nul")
   
   
   }

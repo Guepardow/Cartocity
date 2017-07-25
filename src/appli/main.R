@@ -1,17 +1,19 @@
 # = = = = = = = = = = = = = = = = = = = = = = = = = = 
 # Création le 1er juillet 2017
-# Dataviz d'une ville
+# CartoMontreuil - Dataviz d'une ville
 #
-# Mehdi Miah
+# Auteur : Mehdi Miah
 #
-# TODO  : rendrele 1er tour / 2nd tour reactive à l'élection
-#       : à chaque candidat sa couleur
-#       : limiter les teintes pour les petits candidats
+# Descriptif: Visualise l'ensemble des données de la ville de Montreuil
+#
+# Remarques : pour l'instant, seules les présidentielles 2017 sont disponibles
+#
+# TODO  : à chaque candidat sa couleur
+#       : obtenir plus d'info pour bureau de vote
 #
 # BUG : encoding UTF-8 non active sur geojson_read
 #     : bureaux_de_vote : code couleur de 17 sur la carte des bureaux 2015
 #                       : nom 8 + 10 + 9 +
-#     : voix exprimés ou voix votés
 # = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 # == Préambule ======================================
@@ -28,10 +30,8 @@ library(shiny)
 library(leaflet)
 library(geojsonio)
 
-
 # Il faut calculer les pourcentages des voix emportés par le candidat par ce candidat
-source("./src/appli/get_voix_officielle.R")
-source("./src/appli/get_voix_brute.R")
+source("./src/appli/get_voix.R")
 source("./src/appli/get_max_voix.R")
 
 # == Ouverture des fichiers permettant la géolocalisation ===================
@@ -40,6 +40,7 @@ source("./src/appli/get_max_voix.R")
 liste_elections = list.dirs(path = "./data/vote", full.names = FALSE, recursive = FALSE)
 
 # Liste des couleurs des candidats
+# TODO : réactive
 liste_couleurs = fread("./data/vote/2017 - Presidentielles/color.csv", stringsAsFactors = FALSE, data.table = FALSE)
 
 # carte des bureaux de vote
@@ -108,7 +109,15 @@ ui = fluidPage(
                     
              ),
              
-             leafletOutput("mymap", height = 650) %>% print
+             leafletOutput("mymap", height = 650) %>% print,
+             
+             # Shiny versions prior to 0.11 should use class="modal" instead.
+             absolutePanel(id = "panel_controls", class = "panel panel-default", fixed = TRUE,
+                           draggable = FALSE, top = 90, left = "auto", right = 20, bottom = "auto",
+                           width = 330, height = "auto",
+                           
+                           h3("Bureau de vote")
+             )
     ),
     
     #Panel 2 : la carte des données socio-économique
@@ -130,18 +139,14 @@ ui = fluidPage(
 server = shinyServer(function(input, output, session) {
 
   # == Ouverture du fichier des élections du tour correspond ==
-  
   election_tour = reactive({
     fread(paste0("./data/vote/", input$election_choice, "/", input$tour_choice, "/output/montreuil.csv"), data.table = FALSE, encoding = "UTF-8")
   })
   
-  
   # == Ajout du candidat sélectionné ==
-
   liste_candidats = reactive({
-    election_tour() %>% select(choix) %>% unique()
+    election_tour() %>% dplyr::select(choix) %>% unique()
   })
-  
   
   #Mise à jour de l'affichage des candidats
   observe({
@@ -149,26 +154,15 @@ server = shinyServer(function(input, output, session) {
     )
   })
   
-  #election_tour = fread("./data/vote/2017 - Presidentielles/2nd tour/output/montreuil.csv", data.table = FALSE, encoding = "UTF-8")
-  #liste_candidats = election_tour$choix %>% unique()
+  # == Calcul du score maximal ==
   max_voix = reactive({
-    round(get_max_voix(election_tour()),2) +1 
+    round(get_max_voix(election_tour(), input$calcul_choice),2) + 1 
   })
   
-  
-  
-  # == Reactive dataset ==
+  # == Calcul des scores du candidat choisi ==
   newData <- reactive({
-    if(input$calcul_choice == "Officielle"){
-      df_voix <- get_voix_officielle(election_tour(), input$candidat_choice)
-    }else if(input$calcul_choice == "Brute"){
-      df_voix <- get_voix_brute(election_tour(), input$candidat_choice)
-    }
+    df_voix <- get_voix(election_tour(), input$candidat_choice, calcul = input$calcul_choice)
     return(df_voix)
-  })
-  
-  df_voix = reactive({
-    get_voix(election_tour(), input$candidat_choice)
   })
   
   # == Colorimétrie ==
@@ -182,8 +176,6 @@ server = shinyServer(function(input, output, session) {
     return(pal)
   }) 
   
-  
-  
   # == Création de la map ==
   
   output$mymap <- renderLeaflet({
@@ -193,7 +185,6 @@ server = shinyServer(function(input, output, session) {
     
     # Colorimétrie
     pal = newPal()
-    
     
     # == Nom des bureaux de vote ==
 
@@ -206,13 +197,26 @@ server = shinyServer(function(input, output, session) {
       addPolygons(fillColor = ~pal(pct),  
                   color = "black",
                   fillOpacity = 0.9, 
+                  layerId = bureaux_de_vote$name,
                   popup = paste0("<strong>Bureau: </strong>",bureaux_de_vote$name, 
                                  "<br> <strong>Pourcentage: </strong>", bureaux_de_vote$pct, "%")) %>%
-      addLegend("bottomright", pal, values = ~pct,
+      addLegend("bottomright", 
+                pal, 
+                values = ~pct,
                 title = "% de voix",
                 labFormat = labelFormat(suffix = "%"),
-                opacity = 1, labels = "taux_abstention"
+                opacity = 1, 
+                labels = "taux_abstention"
       )
+  })
+  
+  observe({
+    
+    #create object for clicked polygon
+    click <- input$mymap_shape_click
+    if (is.null(click))
+      return()
+    cat(sprintf(paste(click$id, "\n")))    
   })
   
 })
@@ -220,4 +224,3 @@ server = shinyServer(function(input, output, session) {
 # == Application ==============================================
 
 shinyApp(ui = ui, server = server)
-

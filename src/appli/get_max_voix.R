@@ -1,8 +1,8 @@
-get_max_voix = function(election_tour, calcul = "Officielle"){
+get_max_voix = function(election_tour, version_calcul = "Officielle"){
   # (input) election_tour : data.frame contenant les voix pour des candidats
-  # (input) calcul        : mode de calcul ('Officielle' ou 'Brute')
+  # (input) version_calcul        : mode de calcul ('Officielle' ou 'Brute')
   #
-  # (output)              : le score le plus élevé obtenu par un candidat
+  # (output)              : le score le plus élevé obtenu par un candidat dans un bureau de vote
   #
   # Remarque : le pourcentage de tous les choix est calculé par choix/(somme de tous les voix) dans le cas brute
   #         : le pourcentage reprend les calculs officiels dans l'autre cas.
@@ -13,13 +13,13 @@ get_max_voix = function(election_tour, calcul = "Officielle"){
     select(-num_bureau)
   
   # Calcul du nombre de voix maximales selon le type de calcul
-  if(calcul == 'Brute'){
+  if(version_calcul == 'Brute'){
     
     df$pct_max = apply(df, 1, function(x) max(x))
     df$inscrits = apply(df, 1, function(x) {sum(x)-x["pct_max"]})
     df$voix = df$pct_max / df$inscrits * 100
     
-  }else if(calcul == 'Officielle'){
+  }else if(version_calcul == 'Officielle'){
     
     # délimitation des choix
     choix = names(df)

@@ -1,11 +1,11 @@
-get_voix = function(election_tour, mon_choix, calcul = "Officielle"){
+get_voix_candidat = function(election_tour, mon_choix, version_calcul = "Officielle"){
   # (input) election_tour : data.frame contenant les voix pour des candidats
   # (input) mon_choix     : un des candidat
-  # (input) calcul        : mode de calcul ('Officielle' ou 'Brute')
+  # (input) version_calcul        : mode de calcul ('Officielle' ou 'Brute')
   #
   # (output)              : un data.frame donnant la correspondance entre les bureaux de vote
-  #                         et son pourcentage de voix calculé soit de manière brute, soit à 
-  #                        partir des formules du Ministère de l'Intérieur
+  #                         et leur pourcentage de voix calculé soit de manière brute, soit à 
+  #                        partir des formules du Ministère de l'Intérieur, pour un candidat donné
   #
   # Remarque : pour la version 'Officielle', le pourcentage de l'abstention est calculé par absention/(somme de tous les voix), 
   # pour les votes 'blanc' et 'nul' , le pourcentage est calculé par choix/(somme de tous les voix - abstention)
@@ -16,7 +16,7 @@ get_voix = function(election_tour, mon_choix, calcul = "Officielle"){
     filter(choix == mon_choix)
   
   # votes total
-  if(calcul == "Officielle"){ # Cas en suivant les formules du Ministère
+  if(version_calcul == "Officielle"){ # Cas en suivant les formules du Ministère
   # il faut faire la distintion si le choix est l'abstention, blanc, nul ou autre
   if(mon_choix == "abstention"){
     total = election_tour %>%
@@ -33,7 +33,7 @@ get_voix = function(election_tour, mon_choix, calcul = "Officielle"){
         group_by(num_bureau) %>%
         summarise(count = sum(vote))
     }
-  }else if(calcul == "Brute"){ # Cas brute
+  }else if(version_calcul == "Brute"){ # Cas brute
     total = election_tour %>%
       group_by(num_bureau) %>%
       summarise(count = sum(vote))
@@ -55,17 +55,16 @@ if(FALSE){
                         data.table = FALSE, encoding = "UTF-8")
 
   #Test 1 : abstention
-  voix = get_voix(election_tour, "abstention", calcul = "Officielle")
+  voix = get_voix_candidat(election_tour, "abstention", version_calcul = "Officielle")
 
   #Test 2 : un candidat
-  voix = get_voix(election_tour, "Benoit HAMON", calcul = "Officielle")
+  voix = get_voix_candidat(election_tour, "Benoit HAMON", version_calcul = "Officielle")
   
   #Test 3 : blanc
-  voix = get_voix(election_tour, "blanc", calcul = "Officielle")
+  voix = get_voix_candidat(election_tour, "blanc", version_calcul = "Officielle")
   
   #Test 4 : nul
-  voix = get_voix(election_tour, "nul", calcul = "Officielle")
-  
+  voix = get_voix_candidat(election_tour, "nul", version_calcul = "Officielle")
   
   }
 

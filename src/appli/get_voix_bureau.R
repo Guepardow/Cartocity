@@ -1,4 +1,4 @@
-get_voix_bureau = function(election_tour, mon_bureau, version_calcul = "Officielle"){
+get_voix_bureau = function(election_tour, mon_bureau, version_calcul = "Officielle", liste_couleurs){
   # (input) election_tour   : data.frame contenant les voix pour des candidats
   # (input) mon_bureau      : un des bureaux de vote
   # (input) version_calcul  : version de calcul ('Officielle' ou 'Brute')
@@ -10,6 +10,10 @@ get_voix_bureau = function(election_tour, mon_bureau, version_calcul = "Officiel
   # Remarque : pour la version 'Officielle', le pourcentage de l'abstention est calculé par absention/(somme de tous les voix), 
   # pour les votes 'blanc' et 'nul' , le pourcentage est calculé par choix/(somme de tous les voix - abstention)
   # et pour les candidats physiques, la formule est choix/(somme de tous les voix - abstention - blanc - nul)
+  
+  # Rajout des couleurs
+  election_tour = election_tour %>%
+    left_join(liste_couleurs, by = "choix")
   
   # Filtrage des candidats en fonction de la version de calcul
   if(version_calcul == "Officielle"){
@@ -30,7 +34,7 @@ get_voix_bureau = function(election_tour, mon_bureau, version_calcul = "Officiel
   # pourcentage de voix
   final = favorable %>%
     mutate(pct = round(vote/total * 100,2)) %>%
-    select(num_bureau, choix, pct)
+    select(num_bureau, choix, pct, couleur)
   
   return(final)
   
@@ -38,14 +42,16 @@ get_voix_bureau = function(election_tour, mon_bureau, version_calcul = "Officiel
 
 # == Tests unitaires ==
 if(FALSE){
-  election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", 
-                        data.table = FALSE, encoding = "UTF-8")
+  liste_couleurs = fread("./data/vote/2017 - Presidentielles/color.csv", stringsAsFactors = FALSE, data.table = FALSE)
+
   
+  election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", 
+                        data.table = FALSE, encoding = "UTF-8") 
   #Test 1 : version Officielle
-  voix = get_voix_bureau(election_tour, "54", version_calcul = "Officielle")
+  voix = get_voix_bureau(election_tour, "54", version_calcul = "Officielle", liste_couleurs)
   
   #Test 2 : version Brute
-  voix = get_voix_bureau(election_tour, "28", version_calcul = "Brute")
+  voix = get_voix_bureau(election_tour, "28", version_calcul = "Brute", liste_couleurs)
 
   
 }

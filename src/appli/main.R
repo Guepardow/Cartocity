@@ -8,13 +8,13 @@
 #
 # Remarques : pour l'instant, seules les présidentielles 2017 sont disponibles
 #
-# TODO  : à chaque candidat sa couleur
-#       : obtenir plus d'info pour bureau de vote
+# TODO  : couleur des polygones en fonction des candidats
+#       : regrouper des candidats dans la version de calcul 'Brute'
+#       : afficher le rang dans le bureau de vote du candidat sélectionné
 #
 # BUG : encoding UTF-8 non active sur geojson_read
 #     : bureaux_de_vote : code couleur de 17 sur la carte des bureaux 2015
 #                       : nom 8 + 10 + 9 +
-#     : avoir une version de get_voix au niveau ville (1 candidat x 57 bureaux) et au niveau bureau de vote (1 bureau x 14 candidats)
 # = = = = = = = = = = = = = = = = = = = = = = = = = = 
 
 # == Préambule ======================================
@@ -30,6 +30,7 @@ library(tidyr)
 library(shiny)
 library(leaflet)
 library(geojsonio)
+library(ggplot2)
 
 # Il faut calculer les pourcentages des voix emportés par ce candidat
 source("./src/appli/get_voix_candidat.R")
@@ -43,7 +44,7 @@ source("./src/appli/get_voix_bureau.R")
 liste_elections = list.dirs(path = "./data/vote", full.names = FALSE, recursive = FALSE)
 
 # Liste des couleurs des candidats TODO : réactive
-#liste_couleurs = fread("./data/vote/2017 - Presidentielles/color.csv", stringsAsFactors = FALSE, data.table = FALSE)
+liste_couleurs = fread("./data/vote/2017 - Presidentielles/color.csv", stringsAsFactors = FALSE, data.table = FALSE)
 
 # carte des bureaux de vote TODO : a rendre reactive
 bureaux_de_vote = geojson_read("./data/bureaux_de_vote/output/montreuil_57s.json", what = "sp")
@@ -82,7 +83,7 @@ ui = fluidPage(
              column(width = 3,
                     
                     # Choix de la méthode de calcul
-                    radioButtons(inputId = "choice_calcul",
+                    radioButtons(inputId = "choice_version_calcul",
                                 label    = "Choix de la méthode de calcul",
                                 choices  = c("Brute", "Officielle"),
                                 selected = "Officielle",
@@ -155,7 +156,8 @@ server = shinyServer(function(input, output, session) {
 
   # == Ouverture du fichier des élections du tour correspond ==
   election_tour = reactive({
-    fread(paste0("./data/vote/", input$choice_election, "/", input$choice_tour, "/output/montreuil.csv"), data.table = FALSE, encoding = "UTF-8")
+    fread(paste0("./data/vote/", input$choice_election, "/", input$choice_tour, "/output/montreuil.csv"), 
+          data.table = FALSE, encoding = "UTF-8")
   })
   
   # == Ajout du candidat sélectionné ==
@@ -172,12 +174,12 @@ server = shinyServer(function(input, output, session) {
   # == Calcul du score maximal ==
   # Cela permet d'obtenir le score maximal lorsque l'utilisateur souhaite comparer selon la colorimétrie les candidats
   max_voix = reactive({
-    round(get_max_voix(election_tour(), input$choice_calcul),2) + 1 
+    round(get_max_voix(election_tour(), input$choice_version_calcul)) + 1 
   })
   
   # == Calcul des scores du candidat choisi ==
   get_df_voix_candidat <- reactive({
-    df_voix_candidat <- get_voix_candidat(election_tour(), input$choice_candidat, version_calcul = input$choice_calcul)
+    df_voix_candidat <- get_voix_candidat(election_tour(), input$choice_candidat, version_calcul = input$choice_version_calcul)
     return(df_voix_candidat)
   })
   
@@ -202,6 +204,13 @@ server = shinyServer(function(input, output, session) {
     # Colorimétrie
     pal = get_pal()
     
+    # Label
+    labels <- sprintf(
+      "<strong> Bureau de vote : </strong> %s <br/>
+      <strong>%s : </strong> %s&#37;", # le symbole "%" est "&#37;" en HTML
+      bureaux_de_vote$name, input$choice_candidat, bureaux_de_vote$pct
+    ) %>% lapply(htmltools::HTML)
+    
     # == Nom des bureaux de vote ==
 
     leaflet(bureaux_de_vote, 
@@ -214,8 +223,12 @@ server = shinyServer(function(input, output, session) {
                   color       = "black",
                   fillOpacity = 0.9, 
                   layerId     = bureaux_de_vote$num_bureau,
-                  popup       = paste0("<strong>Bureau: </strong>",bureaux_de_vote$name,
-                                       "<br> <strong>Pourcentage: </strong>", bureaux_de_vote$pct, "%")) %>%
+                  label = labels,
+                  highlightOptions = highlightOptions(weight = 5,color = "#666", bringToFront = TRUE),
+                  labelOptions = labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"),
+                    textsize = "12px", clickable = TRUE,
+                    direction = "auto")
+                  ) %>%
       addLegend(position  = "bottomright", 
                 pal       = pal, 
                 values    = ~pct,
@@ -235,7 +248,7 @@ server = shinyServer(function(input, output, session) {
   
   # == Calcul des scores dans le bureau choisi ==
   get_df_voix_bureau <- reactive({
-    df_voix_bureau <- get_voix_bureau(election_tour(), click()$id, version_calcul = input$choice_calcul)
+    df_voix_bureau <- get_voix_bureau(election_tour(), click()$id, version_calcul = input$choice_version_calcul, liste_couleurs)
     return(df_voix_bureau)
   })
   
@@ -246,10 +259,19 @@ server = shinyServer(function(input, output, session) {
   
   # == Génération de la répartition des voix ==
   output$my_barplot = renderPlot({
+    if (is.null(input$mymap_shape_click))
+      return()
     
-    df_voix_bureau = get_df_voix_bureau() %>% arrange(pct)
-    par(mar=c(0,8,0,3)) #haut, droite, bas, gauche
-    barplot(df_voix_bureau$pct, names.arg = df_voix_bureau$choix, horiz = TRUE, cex.names=0.6, las=1)
+    df_voix_bureau = get_df_voix_bureau()
+    df_voix_bureau$choix <- factor(df_voix_bureau$choix, levels = df_voix_bureau$choix[order(df_voix_bureau$pct)]) #pour ordonner
+
+    par(mar=c(3,8,0,3)) #haut, droite, bas, gauche
+    ggplot(df_voix_bureau, aes(x=choix, y=pct, fill = couleur)) + 
+      geom_bar(stat="identity") +  
+      scale_fill_identity() + #pour obtenir la bonne couleur pour chaque candidat
+      ylim(c(0,max_voix())) + #valeur maximale sur l'axe des pct
+      xlab("") + ylab("") + #no labels
+      coord_flip() #format horizontal
   })
   
 })

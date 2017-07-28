@@ -50,4 +50,6 @@ get_max_voix = function(election_tour, version_calcul = "Officielle"){
 
 if(FALSE){
   election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", data.table = FALSE, encoding = "UTF-8")
+
+  res = get_max_voix(election_tour, version_calcul = "Officielle")
 }

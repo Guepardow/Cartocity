@@ -1,7 +1,7 @@
 choix ; couleur
-abstention ; color_repu
+abstention ; #FFFFFF
 Benoit HAMON ; #DC2A1B
-blanc ; color_repu
+blanc ; #FFFFFF
 Emmanuel MACRON ; #FFD75C
 Francois ASSELINEAU ; #131413
 Francois FILLON ; #0089C4
@@ -11,5 +11,5 @@ Jean-Luc MELENCHON ; #DC2A1B
 Marine LE PEN ; #83726D
 Nathalie ARTHAUD ; #DC2A1B
 Nicolas DUPONT-AIGNAN ; #0089C4
-nul ; color_repu
+nul ; #FFFFFF
 Philippe POUTOU ; #DC2A1B

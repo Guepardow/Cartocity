@@ -1,7 +1,7 @@
 get_voix_candidat = function(election_tour, mon_choix, version_calcul = "Officielle"){
-  # (input) election_tour : data.frame contenant les voix pour des candidats
-  # (input) mon_choix     : un des candidat
-  # (input) version_calcul        : mode de calcul ('Officielle' ou 'Brute')
+  # (input) election_tour   : data.frame contenant les voix pour des candidats
+  # (input) mon_choix       : un des candidat
+  # (input) version_calcul  : mode de calcul ('Officielle' ou 'Brute')
   #
   # (output)              : un data.frame donnant la correspondance entre les bureaux de vote
   #                         et leur pourcentage de voix calculé soit de manière brute, soit à 
@@ -42,8 +42,7 @@ get_voix_candidat = function(election_tour, mon_choix, version_calcul = "Officie
   # pourcentage de voix
   final = favorable %>%
     left_join(total, by = "num_bureau") %>%
-    mutate(pct = round(vote/count * 100,2)) %>%
-    select(num_bureau, choix, pct)
+    mutate(pct = round(vote/count * 100,2))
   
   return(final)
   
@@ -51,9 +50,12 @@ get_voix_candidat = function(election_tour, mon_choix, version_calcul = "Officie
 
 # == Tests unitaires ==
 if(FALSE){
-  election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/output/montreuil.csv", 
+  
+  setwd("C:/Users/Mehdi/Desktop/Cartocity")
+  election_tour = fread("./data/vote/2017 - Presidentielles/1er tour/montreuil.csv", 
                         data.table = FALSE, encoding = "UTF-8")
-
+  mon_choix = "abstention"
+  
   #Test 1 : abstention
   voix = get_voix_candidat(election_tour, "abstention", version_calcul = "Officielle")
 

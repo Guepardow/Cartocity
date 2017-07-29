@@ -43,9 +43,6 @@ source("./src/appli/get_voix_bureau.R")
 # Liste des élections disponibles : ensemble des dossiers présents dans ./data/vote
 liste_elections = list.dirs(path = "./data/vote", full.names = FALSE, recursive = FALSE)
 
-# Liste des couleurs des candidats TODO : réactive
-liste_couleurs = fread("./data/vote/2017 - Presidentielles/color.csv", stringsAsFactors = FALSE, data.table = FALSE)
-
 # carte des bureaux de vote TODO : a rendre reactive
 bureaux_de_vote = geojson_read("./data/bureaux_de_vote/output/montreuil_57s.json", what = "sp")
 
@@ -119,14 +116,14 @@ ui = fluidPage(
                            class     = "panel panel-default", 
                            fixed     = FALSE,
                            draggable = TRUE, 
-                           top       = 90, 
+                           top       = 260, 
                            left      = "auto", 
-                           right     = 40, 
+                           right     = 20, 
                            bottom    = "auto",
                            width     = 420, 
                            height    = "auto",
                            
-                           h3("Bureau de vote"), 
+                           h3("Bureau de vote",  align = "center"), 
                            
                            # Texte interactif
                            textOutput("text_bureau"),
@@ -156,8 +153,13 @@ server = shinyServer(function(input, output, session) {
 
   # == Ouverture du fichier des élections du tour correspond ==
   election_tour = reactive({
-    fread(paste0("./data/vote/", input$choice_election, "/", input$choice_tour, "/output/montreuil.csv"), 
+    fread(paste0("./data/vote/", input$choice_election, "/", input$choice_tour, "/montreuil.csv"), 
           data.table = FALSE, encoding = "UTF-8")
+  })
+  
+  # == Ouverture du fichier des couleurs politiques ==
+  liste_couleurs = reactive({
+    fread(paste0("./data/vote/", input$choice_election, "/color.csv"), stringsAsFactors = FALSE, data.table = FALSE)
   })
   
   # == Ajout du candidat sélectionné ==
@@ -206,16 +208,17 @@ server = shinyServer(function(input, output, session) {
     
     # Label
     labels <- sprintf(
-      "<strong> Bureau de vote : </strong> %s <br/>
-      <strong>%s : </strong> %s&#37;", # le symbole "%" est "&#37;" en HTML
-      bureaux_de_vote$name, input$choice_candidat, bureaux_de_vote$pct
+      "<strong> Bureau : </strong> %s <br/>
+      <strong>%s : </strong> %s&#37; <br/>
+      <strong> Voix : </strong> %s / %s", # le symbole "%" est "&#37;" en HTML
+      bureaux_de_vote$name, input$choice_candidat, bureaux_de_vote$pct, bureaux_de_vote$vote, bureaux_de_vote$count
     ) %>% lapply(htmltools::HTML)
     
     # == Nom des bureaux de vote ==
 
     leaflet(bureaux_de_vote, 
             options = leafletOptions(zoomControl = FALSE)) %>%
-      setView(lng = 2.45, lat = 48.864, zoom = 14) %>%
+      setView(lng = 2.47, lat = 48.864, zoom = 14) %>%
       
       addProviderTiles("CartoDB.Positron", 
                        options = providerTileOptions(minZoom = 13, maxZoom = 18))  %>%
@@ -229,7 +232,7 @@ server = shinyServer(function(input, output, session) {
                     textsize = "12px", clickable = TRUE,
                     direction = "auto")
                   ) %>%
-      addLegend(position  = "bottomright", 
+      addLegend(position  = "bottomleft", 
                 pal       = pal, 
                 values    = ~pct,
                 title     = "% de voix",
@@ -248,7 +251,7 @@ server = shinyServer(function(input, output, session) {
   
   # == Calcul des scores dans le bureau choisi ==
   get_df_voix_bureau <- reactive({
-    df_voix_bureau <- get_voix_bureau(election_tour(), click()$id, version_calcul = input$choice_version_calcul, liste_couleurs)
+    df_voix_bureau <- get_voix_bureau(election_tour(), click()$id, version_calcul = input$choice_version_calcul, liste_couleurs())
     return(df_voix_bureau)
   })
   
@@ -267,9 +270,9 @@ server = shinyServer(function(input, output, session) {
 
     par(mar=c(3,8,0,3)) #haut, droite, bas, gauche
     ggplot(df_voix_bureau, aes(x=choix, y=pct, fill = couleur)) + 
-      geom_bar(stat="identity") +  
+      geom_bar(stat="identity", color="black") +  
       scale_fill_identity() + #pour obtenir la bonne couleur pour chaque candidat
-      ylim(c(0,max_voix())) + #valeur maximale sur l'axe des pct
+      #ylim(c(0,max_voix())) + #valeur maximale sur l'axe des pct
       xlab("") + ylab("") + #no labels
       coord_flip() #format horizontal
   })
